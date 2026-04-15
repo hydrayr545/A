@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هدية لـ نوني 💌</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--main:#FF5733;--main2:#ff8c6e;--deep:#c73a1a;--glass:rgba(255,255,255,.11);--shadow:rgba(255,87,51,.35);}
+html,body{width:100%;min-height:100%;overflow-x:hidden;font-family:'Tajawal',sans-serif;background:#0e0603;color:#fff;}
+
+.bg-layer{position:fixed;inset:0;z-index:0;background:
+  radial-gradient(ellipse 80% 60% at 50% 0%,#FF573333 0%,transparent 70%),
+  radial-gradient(ellipse 60% 80% at 100% 100%,#c73a1a44 0%,transparent 70%),
+  radial-gradient(ellipse 60% 80% at 0% 100%,#ff8c6e28 0%,transparent 70%),
+  linear-gradient(160deg,#0e0603 0%,#1e0a05 50%,#0e0603 100%);}
+
+.hf-wrap{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.hf{position:absolute;animation:floatUp linear infinite;user-select:none;opacity:0;will-change:transform;}
+@keyframes floatUp{0%{transform:translateY(110vh) rotate(0deg);opacity:.55;}80%{opacity:.22;}100%{transform:translateY(-10vh) rotate(360deg);opacity:0;}}
+
+#splash{position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#0e0603,#2a0d05,#0e0603);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;transition:opacity .9s ease;}
+#splash h1{font-size:clamp(2rem,8vw,3.5rem);font-weight:900;text-align:center;padding:0 1rem;background:linear-gradient(135deg,#FF5733,#ff8c6e,#ffd5cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:pulse 1.4s ease infinite;}
+#splash p{color:rgba(255,140,110,.7);font-size:1.1rem;animation:blink 1.8s ease infinite;}
+#splash .dots span{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--main);margin:0 4px;animation:dotB 1.2s ease infinite;}
+#splash .dots span:nth-child(2){animation-delay:.2s}#splash .dots span:nth-child(3){animation-delay:.4s}
+#splash.hide{opacity:0;pointer-events:none;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes dotB{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.screen{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:2rem 1rem 5rem;display:none;flex-direction:column;align-items:center;gap:1.5rem;}
+.screen.active{display:flex;}
+
+.title-bar{width:100%;text-align:center;padding-top:1rem;}
+.title-bar small{display:block;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,140,110,.4);margin-bottom:.4rem;}
+.title-bar .big{font-size:clamp(1.6rem,7vw,2.5rem);font-weight:900;background:linear-gradient(135deg,#ff8c6e,#fff 60%,#ffd5cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+.photo-card{width:100%;border-radius:2.2rem;overflow:hidden;position:relative;box-shadow:0 20px 60px var(--shadow),0 0 0 1.5px rgba(255,140,110,.25);animation:slideUp .6s ease both;}
+.photo-card img{width:100%;height:250px;object-fit:cover;display:block;filter:brightness(.88) saturate(1.2) hue-rotate(340deg);}
+.photo-card .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,6,3,.9) 0%,transparent 55%);display:flex;align-items:flex-end;padding:1.2rem 1.5rem;}
+.photo-card .overlay span{font-size:1.9rem;font-weight:900;background:linear-gradient(90deg,#fff,#ffd5cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+.card{width:100%;border-radius:1.8rem;background:var(--glass);backdrop-filter:blur(20px) saturate(160%);border:1.5px solid rgba(255,140,110,.2);padding:1.8rem 1.5rem;text-align:center;box-shadow:0 12px 40px var(--shadow),inset 0 1px 0 rgba(255,255,255,.08);animation:slideUp .6s ease both;}
+@keyframes slideUp{from{transform:translateY(28px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+.name-big{font-size:clamp(2.2rem,9vw,3.8rem);font-weight:900;line-height:1.2;background:linear-gradient(135deg,#ff8c6e,#fff 55%,#ffd5cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.q-text{font-size:clamp(1.4rem,5.5vw,2rem);font-weight:900;background:linear-gradient(135deg,#ff8c6e,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:.6rem 0;}
+.sub{color:rgba(255,180,160,.65);font-size:.98rem;margin-top:.4rem;}
+.note{color:rgba(255,180,160,.85);font-size:1.05rem;margin-top:.5rem;font-weight:700;}
+.divider{width:55%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,140,110,.35),transparent);margin:.7rem auto;}
+
+.emojis{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;font-size:2rem;margin:.8rem 0;}
+.emojis span{display:inline-block;animation:bounce 2s ease infinite;}
+.emojis span:nth-child(2){animation-delay:.15s}.emojis span:nth-child(3){animation-delay:.3s}.emojis span:nth-child(4){animation-delay:.45s}.emojis span:nth-child(5){animation-delay:.6s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.btn-row{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem;}
+.btn{padding:.8rem 2rem;border:none;border-radius:50px;font-size:1.08rem;font-family:'Tajawal',sans-serif;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn-yes{background:linear-gradient(135deg,var(--main),var(--main2));color:#fff;box-shadow:0 6px 22px rgba(255,87,51,.5);}
+.btn-yes:active{transform:scale(.96);}
+.btn-no{background:rgba(255,255,255,.07);color:rgba(255,180,160,.9);border:1.5px solid rgba(255,140,110,.35);}
+
+.angry{color:#ff8c6e;font-size:1.15rem;font-weight:700;margin-top:.8rem;display:none;}
+.angry.show{display:block;animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+.gif-grid{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;}
+.gif-grid img{border-radius:1.1rem;width:85px;height:85px;object-fit:cover;border:1.5px solid rgba(255,140,110,.2);box-shadow:0 4px 14px rgba(0,0,0,.5);transition:transform .2s;}
+.gif-grid img:hover{transform:scale(1.08);}
+
+.big-heart{font-size:5.5rem;display:block;margin:1rem 0;animation:heartbeat 1.3s ease infinite;filter:drop-shadow(0 0 26px rgba(255,87,51,.75));}
+@keyframes heartbeat{0%,100%{transform:scale(1)}30%{transform:scale(1.26)}60%{transform:scale(1.1)}}
+.love-text{font-size:clamp(1.4rem,5vw,2.1rem);font-weight:900;line-height:1.6;background:linear-gradient(135deg,#fff,#ffd5cc,#ff8c6e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+.infinite-text{font-size:clamp(2rem,8vw,3.5rem);font-weight:900;letter-spacing:.08em;background:linear-gradient(135deg,#FF5733,#ff8c6e,#ffd5cc,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s ease infinite;background-size:200% auto;}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+
+#musicBtn{position:fixed;bottom:1.5rem;left:1.5rem;z-index:500;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--main),var(--deep));border:none;color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 20px rgba(255,87,51,.55);animation:glow 2.5s ease infinite;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+@keyframes glow{0%,100%{box-shadow:0 5px 20px rgba(255,87,51,.55);}50%{box-shadow:0 5px 34px rgba(255,87,51,.9);}}
+
+.cf{position:fixed;pointer-events:none;animation:cfFall linear forwards;z-index:800;}
+@keyframes cfFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(105vh) rotate(720deg);opacity:0;}}
+
+.footer{color:rgba(255,140,110,.3);font-size:.78rem;text-align:center;z-index:2;}
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="hf-wrap" id="hfWrap"></div>
+<button id="musicBtn" onclick="toggleMusic()" aria-label="تشغيل الموسيقى">🎵</button>
+
+<!-- SPLASH -->
+<div id="splash">
+  <h1>💌 هدية لـ نوني 💌</h1>
+  <p>انتظري لحظة ✨</p>
+  <div class="dots" style="margin-top:.3rem"><span></span><span></span><span></span></div>
+</div>
+
+<!-- ═══ SCREEN 1 ═══ -->
+<div class="screen active" id="s1">
+  <div class="title-bar">
+    <small>a gift for you</small>
+    <div class="big">هدية لـ نوني 💌</div>
+  </div>
+  <div class="photo-card">
+    <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/wp2.jpeg" alt="">
+    <div class="overlay"><span>Hey you! 🫢</span></div>
+  </div>
+  <div class="card">
+    <div class="emojis"><span>🧡</span><span>🌺</span><span>✨</span><span>🫶</span><span>🌸</span></div>
+    <div class="name-big">هلووو نوني! 🫢</div>
+    <div class="divider"></div>
+    <p class="sub">انتِ نوني؟ 👀 • Are you Nooni? 👀</p>
+    <div class="btn-row">
+      <button class="btn btn-yes" onclick="onYes()">أيوه أنا نوني 🧡</button>
+      <button class="btn btn-no" onclick="notNooni()">لا 😅</button>
+    </div>
+    <p id="notNooniMsg" style="display:none;color:#ff8c6e;margin-top:1rem;font-weight:700">مشكلة!! هذا الموقع لنوني بس 😡</p>
+  </div>
+  <div class="card" style="animation-delay:.13s">
+    <div class="gif-grid">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/hearthappy.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/pusn.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/smprt.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/ngumpet.gif" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 2 ═══ -->
+<div class="screen" id="s2">
+  <div class="title-bar">
+    <small>the big question</small>
+    <div class="big">نوني 🌺</div>
+  </div>
+  <div class="card">
+    <div class="q-text">هل تحبيني؟ 🫣🧡</div>
+    <div class="divider"></div>
+    <p class="sub">Do you love me? 🥹</p>
+    <div id="angry1" class="angry">هاي ليش!! 😡🫵</div>
+    <div class="btn-row">
+      <button class="btn btn-yes" onclick="goTo('s3')">نعم 🧡</button>
+      <button class="btn btn-no" id="noBtn1" onclick="clickNo('angry1','noBtn1')">لا 🙈</button>
+    </div>
+  </div>
+  <div class="card" style="animation-delay:.13s">
+    <div class="gif-grid">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/cilukba.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/pandapanah.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/emawh.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/pusn.gif" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 3 ═══ -->
+<div class="screen" id="s3">
+  <div class="title-bar">
+    <small>are you sure?</small>
+    <div class="big">متأكدة؟ 🥹</div>
+  </div>
+  <div class="card">
+    <div class="q-text">انتِ متأكدة تحبيني؟ 🥹</div>
+    <div class="divider"></div>
+    <p class="sub">Are you sure you love me? 🫣</p>
+    <p class="note">ارجووووووك قولي نعم 🥲</p>
+    <p style="color:rgba(255,140,110,.5);font-size:.9rem;margin-top:.2rem">Please 🥲</p>
+    <div id="angry2" class="angry">لأ ما أقبل لا!! 😤</div>
+    <div class="btn-row">
+      <button class="btn btn-yes" onclick="goTo('s5')">أيوه أحبك 🧡</button>
+      <button class="btn btn-no" id="noBtn2" onclick="clickNo('angry2','noBtn2')">مو متأكدة 😬</button>
+    </div>
+  </div>
+  <div class="card" style="animation-delay:.13s">
+    <div class="gif-grid">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/hearthappy.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/ngumpet.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/smprt.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/emawh.gif" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 4 ═══ -->
+<div class="screen" id="s4">
+  <div class="title-bar">
+    <small>it's okay</small>
+    <div class="big">عادي... 😝</div>
+  </div>
+  <div class="card">
+    <div class="q-text">عادي... 😝</div>
+    <div class="divider"></div>
+    <p class="note">أصلاً ما أريد أعرف...</p>
+    <p style="color:rgba(255,140,110,.75);font-size:1rem;margin-top:.4rem">لأني أعرف إنك تحبيني!! 😝</p>
+    <p class="note" style="margin-top:.8rem">لأننننننن... 🫣🧡</p>
+    <div class="btn-row" style="margin-top:1.2rem">
+      <button class="btn btn-yes" onclick="goTo('s5')">ليش؟ 👀🧡</button>
+    </div>
+  </div>
+  <div class="card" style="animation-delay:.13s">
+    <div class="gif-grid">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/cilukba.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/pusn.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/pandapanah.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/hearthappy.gif" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCREEN 5 ═══ -->
+<div class="screen" id="s5">
+  <div class="title-bar">
+    <small>forever &amp; always</small>
+    <div class="big" style="font-size:clamp(1.5rem,7vw,2.2rem)">بموت فيكي يا نوني 🧡</div>
+  </div>
+  <div class="card">
+    <span class="big-heart">🧡</span>
+    <div class="love-text">
+      يييي نوني!! 🥹<br>
+      بموت فيكييييي<br>
+      <span style="font-size:1rem;opacity:.8">موت موت موت</span><br>
+    </div>
+    <div class="divider" style="margin:1.2rem auto"></div>
+    <div class="infinite-text">∞ Infinite ∞</div>
+    <div class="emojis" style="margin-top:1.2rem">
+      <span>🫶</span><span>🧡</span><span>🥰</span><span>✨</span><span>🌺</span>
+    </div>
+  </div>
+  <div class="card" style="animation-delay:.13s">
+    <div class="gif-grid">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/hearthappy.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/smprt.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/emawh.gif" alt="">
+      <img src="https://zkkm.zeabur.app/themes/DoYouLoveMe/assets/pusn.gif" alt="">
+    </div>
+  </div>
+  <p class="footer">تم صنع هذا الموقع كهدية لـ نوني من حبيب قلبها ❤️</p>
+</div>
+
+<script>
+/* ─── FLOATING EMOJIS ─── */
+const wrap=document.getElementById('hfWrap');
+['🧡','✨','🌺','🫶','💫','🌸'].forEach((e,idx)=>{
+  if(idx>=6)return;
+  for(let j=0;j<3;j++){
+    const d=document.createElement('div');
+    d.className='hf';d.textContent=e;
+    d.style.cssText=`left:${Math.random()*100}vw;font-size:${.7+Math.random()*1.3}rem;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*12}s`;
+    wrap.appendChild(d);
+  }
+});
+
+/* ─── SPLASH ─── */
+setTimeout(()=>document.getElementById('splash').classList.add('hide'),2300);
+
+/* ─── AUDIO ─── */
+let musicOn=false;
+const bgAudio=new Audio('music.mp3');
+bgAudio.volume=0.8;
+bgAudio.addEventListener('ended',()=>{bgAudio.currentTime=43;bgAudio.play();});
+
+function playMusic(){
+  bgAudio.currentTime=43;
+  bgAudio.play().then(()=>{musicOn=true;document.getElementById('musicBtn').textContent='🎵';}).catch(e=>{});
+}
+function toggleMusic(){
+  if(!musicOn){bgAudio.play().catch(()=>{});musicOn=true;document.getElementById('musicBtn').textContent='🎵';}
+  else{bgAudio.pause();musicOn=false;document.getElementById('musicBtn').textContent='🔇';}
+}
+
+/* ─── SCREEN 1 YES ─── */
+function onYes(){playMusic();goTo('s2');}
+
+/* ─── NAVIGATION ─── */
+let noCounts={};
+function goTo(id){
+  ['noBtn1','noBtn2'].forEach(bid=>{
+    const b=document.getElementById(bid);if(!b)return;
+    b.style.cssText='';b.style.display='';
+  });
+  document.querySelectorAll('.angry').forEach(a=>{a.className='angry';});
+  noCounts={};
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const pg=document.getElementById(id);
+  pg.classList.add('active');
+  pg.querySelectorAll('.card,.photo-card').forEach((c,i)=>{
+    const delay=(i*.13)+'s';
+    c.style.animationDelay=delay;c.style.animation='none';
+    void c.offsetWidth;
+    c.style.animation='slideUp .6s ease both';c.style.animationDelay=delay;
+  });
+  if(id==='s5'){confettiFired=false;setTimeout(confetti,400);}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ─── NOT NOONI ─── */
+function notNooni(){
+  const m=document.getElementById('notNooniMsg');
+  m.style.display='block';clearTimeout(m._t);
+  m._t=setTimeout(()=>m.style.display='none',2500);
+}
+
+/* ─── NO BUTTON ESCAPE ─── */
+function escapeBtn(id){
+  const btn=document.getElementById(id);
+  if(!btn||btn.style.display==='none')return;
+  btn.style.position='fixed';
+  btn.style.left=Math.random()*Math.max(0,window.innerWidth-150)+'px';
+  btn.style.top=Math.random()*Math.max(0,window.innerHeight-60)+'px';
+  btn.style.zIndex='400';btn.style.transition='left .25s ease,top .25s ease';btn.style.margin='0';
+}
+
+/* ─── CLICK NO ─── */
+function clickNo(msgId,btnId){
+  escapeBtn(btnId);
+  noCounts[btnId]=(noCounts[btnId]||0)+1;
+  const m=document.getElementById(msgId);
+  m.className='angry';void m.offsetWidth;m.className='angry show';
+  if(noCounts[btnId]>=3){
+    const b=document.getElementById(btnId);
+    b.textContent='خلاص! ما عاد فيك خيار 😂';
+    b.style.pointerEvents='none';b.style.opacity='0.45';b.style.cursor='not-allowed';
+  }
+}
+
+/* ─── HOVER ESCAPE ─── */
+['noBtn1','noBtn2'].forEach(id=>{
+  const btn=document.getElementById(id);if(!btn)return;
+  btn.addEventListener('mouseenter',()=>escapeBtn(id));
+  btn.addEventListener('touchstart',()=>escapeBtn(id),{passive:true});
+});
+
+/* ─── CONFETTI ─── */
+let confettiFired=false;
+function confetti(){
+  if(confettiFired)return;confettiFired=true;
+  const cols=['#FF5733','#ff8c6e','#ffd5cc','#c73a1a','#ffb3a0','#fff','#ff4500'];
+  for(let i=0;i<130;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div');
+      const sz=5+Math.random()*10;
+      c.className='cf';
+      c.style.cssText=`left:${Math.random()*100}vw;top:0;width:${sz}px;height:${sz*(.3+Math.random()*.7)}px;background:${cols[~~(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.4+Math.random()*2}s`;
+      document.body.appendChild(c);setTimeout(()=>c.remove(),3800);
+    },i*28);
+  }
+}
+</script>
+</body>
+</html>
